@@ -1,0 +1,18 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+    </head>
+    <body>
+        @content
+        <script type="application/javascript" src="/assets/web3.js"></script>
+        <script type="application/javascript">
+                var web3 = new Web3();
+                web3.setProvider(new web3.providers.HttpProvider());
+        </script>
+        @scalajs.html.scripts("client", name => s"/assets/$name", name => getClass.getResource(s"/public/$name") != null)
+    </body>
+</html>

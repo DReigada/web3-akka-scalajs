@@ -1,3 +1,5 @@
+import Dependencies._
+
 val scalaV = "2.12.2"
 
 lazy val server = (project in file("server")).settings(
@@ -7,8 +9,8 @@ lazy val server = (project in file("server")).settings(
   // triggers scalaJSPipeline when using compile or continuous compilation
   compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
   libraryDependencies ++= Seq(
-    "com.typesafe.akka" %% "akka-http" % "10.0.10",
-    "com.vmunier" %% "scalajs-scripts" % "1.1.0"
+    akkaHttp,
+    scalajsLinkScripts
   ),
   WebKeys.packagePrefix in Assets := "public/",
   managedClasspath in Runtime += (packageBin in Assets).value,
@@ -21,7 +23,8 @@ lazy val client = (project in file("client")).settings(
   scalaVersion := scalaV,
   scalaJSUseMainModuleInitializer := true,
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.9.3" withSources()
+    "org.scala-js" %%% "scalajs-dom" % "0.9.3" withSources(),
+    "be.doeraene" %%% "scalajs-jquery" % "0.9.2" withSources()
   )
 ).enablePlugins(ScalaJSPlugin, ScalaJSWeb).
   dependsOn(sharedJs)
@@ -33,4 +36,4 @@ lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
 
 // loads the server project at sbt startup
-onLoad in Global := (onLoad in Global).value andThen {s: State => "project server" :: s}
+onLoad in Global := (onLoad in Global).value andThen { s: State => "project server" :: s }

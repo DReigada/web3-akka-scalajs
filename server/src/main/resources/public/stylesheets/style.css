@@ -1,0 +1,24 @@
+/*=======================================
+TWEET FEED STYLES
+==================================================*/
+.twt-wrapper .panel-body {
+    max-height: 650px;
+    overflow: auto;
+}
+
+.twt-wrapper .media-list .media img {
+    min-width: 64px;
+    min-height: 64px;
+    border: 2px solid #e5e7e8;
+}
+
+.twt-wrapper .media-list .media {
+    border-bottom: 1px dashed #efefef;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
+
+.twt-wrapper .media-list {
+    max-height: 350px;
+    overflow: auto;
+}

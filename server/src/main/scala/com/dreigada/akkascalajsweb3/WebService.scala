@@ -20,6 +20,13 @@ class WebService() extends Directives {
         encodeResponse {
           getFromResource("public/" + file)
         }
+      } ~
+      pathPrefix("tweether") {
+        get {
+          complete {
+            com.dreigada.tweether.html.index.render()
+          }
+        }
       }
   }
 }

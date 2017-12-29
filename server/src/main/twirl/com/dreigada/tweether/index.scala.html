@@ -1,0 +1,92 @@
+@()
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+            <!--[if IE]>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <![endif]-->
+        <title>Tweether</title>
+            <!-- BOOTSTRAP STYLE SHEET -->
+        <link href="assets/stylesheets/bootstrap.css" rel="stylesheet" />
+            <!-- CUSTOM STYLES -->
+        <link href="/assets/stylesheets/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Tweether</h2>
+                    <br />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                        <!-- TWEETH WRAPPER START -->
+                    <div class="twt-wrapper">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                Tweether Feed
+                            </div>
+                            <div class="panel-body">
+                                <textarea class="form-control" placeholder="Enter here for tweeth..." rows="3"></textarea>
+                                <br />
+                                <a href="#" class="btn btn-primary btn-sm pull-right">Tweeth</a>
+                                <div class="clearfix"></div>
+                                <hr />
+                                <ul id="tweeth-list" class="media-list">
+                                    <li class="media">
+                                        <div class="pull-left">
+                                            <img src="assets/img/1.png" alt="" class="img-circle tweeth-image">
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-muted pull-right">
+                                                <small class="text-muted tweeth-time">30 min ago</small>
+                                            </span>
+                                            <strong class="text-success tweeth-user">@@ Rexona Kumi</strong>
+                                            <p class="tweeth-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Lorem ipsum dolor sit amet, <a href="#"># consectetur adipiscing </a>.
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li id="tweeth-template" class="media hidden">
+                                        <div class="pull-left">
+                                            <img src="" alt="" class="img-circle tweeth-image">
+                                        </div>
+                                        <div class="media-body">
+                                            <span class="text-muted pull-right">
+                                                <small class="text-muted tweeth-time"></small>
+                                            </span>
+                                            <strong class="text-success tweeth-user">@@ Rexona Kumi</strong>
+                                            <p class="tweeth-content">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Lorem ipsum dolor sit amet, <a href="#"># consectetur adipiscing </a>.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <span class="text-danger">237K total tweeths</span>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- TWEETH WRAPPER END -->
+                </div>
+            </div>
+        </div>
+            <!-- REQUIRED SCRIPTS FILES -->
+            <!-- CORE JQUERY FILE -->
+        <script src="assets/js/jquery-1.11.1.js"></script>
+            <!-- REQUIRED BOOTSTRAP SCRIPTS -->
+        <script src="assets/js/bootstrap.js"></script>
+
+        @scalajs.html.scripts("client", name => s"/assets/$name", name => getClass.getResource(s"/public/$name") != null)
+    </body>
+</html>

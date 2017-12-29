@@ -1,10 +1,11 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
 
 contract UserRegister {
     struct User {
         string userName;
         string avatarUrl;
+        address userAddress;
         bool isValid;
     }
 
@@ -33,7 +34,7 @@ contract UserRegister {
         address newUserAddr = msg.sender;
         require(newUserAddr != address(0));
 
-        User memory newUser = User(userName, avatarUrl, true);
+        User memory newUser = User(userName, avatarUrl, newUserAddr, true);
         
         UserRegistered(newUser);
         users[newUserAddr] = newUser;

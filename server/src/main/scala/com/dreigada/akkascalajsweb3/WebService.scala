@@ -27,6 +27,13 @@ class WebService() extends Directives {
             com.dreigada.tweether.html.feed.render()
           }
         }
+      } ~
+      pathPrefix("register") {
+        get {
+          complete {
+            com.dreigada.tweether.html.register.render()
+          }
+        }
       }
   }
 }

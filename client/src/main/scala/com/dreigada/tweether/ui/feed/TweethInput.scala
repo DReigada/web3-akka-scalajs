@@ -1,6 +1,7 @@
-package com.dreigada.tweether.ui
+package com.dreigada.tweether.ui.feed
 
 import com.dreigada.contracts.Tweether
+import com.dreigada.tweether.ui.Helpers
 import org.scalajs.jquery.jQuery
 
 import scala.concurrent.ExecutionContext.Implicits.global

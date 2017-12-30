@@ -1,4 +1,4 @@
-package com.dreigada.tweether.ui
+package com.dreigada.tweether.ui.feed
 
 import com.dreigada.contracts.{Tweeth, Tweether}
 import org.scalajs.jquery.{JQuery, jQuery}

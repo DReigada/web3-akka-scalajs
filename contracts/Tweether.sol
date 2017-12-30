@@ -25,11 +25,14 @@ contract Tweether is UserRegister {
     }
     
     // username, avatar, address, content, timestamp
-    function getTweet(uint index) public view returns (string, string, address, string, uint) {
+    function getTweeth(uint index) public view returns (string, string, address, string, uint) {
         require(index < tweeths.length);
         Tweeth memory t = tweeths[index];
         return (t.user.userName, t.user.avatarUrl, t.user.userAddress, t.content, t.timestamp);
     }
-
+    
+    function getNumberOfTweeths() public view returns (uint) {
+        return tweeths.length;
+    }
     
 }

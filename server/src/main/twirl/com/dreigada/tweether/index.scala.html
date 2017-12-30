@@ -41,22 +41,6 @@
                                 <div class="clearfix"></div>
                                 <hr />
                                 <ul id="tweeth-list" class="media-list">
-                                    <li class="media">
-                                        <div class="pull-left">
-                                            <img src="assets/img/1.png" alt="" class="img-circle tweeth-image">
-                                        </div>
-                                        <div class="media-body">
-                                            <span class="text-muted pull-right">
-                                                <small class="text-muted tweeth-time">30 min ago</small>
-                                            </span>
-                                            <strong class="text-success tweeth-user">@@ Rexona Kumi</strong>
-                                            <p class="tweeth-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Lorem ipsum dolor sit amet, <a href="#"># consectetur adipiscing </a>.
-                                            </p>
-                                        </div>
-                                    </li>
-
                                     <li id="tweeth-template" class="media hidden">
                                         <div class="pull-left">
                                             <img src="" alt="" class="img-circle tweeth-image">
@@ -86,6 +70,23 @@
         <script src="assets/js/jquery-1.11.1.js"></script>
             <!-- REQUIRED BOOTSTRAP SCRIPTS -->
         <script src="assets/js/bootstrap.js"></script>
+        <script type="application/javascript" src="/assets/web3.js"></script>
+        <script type="application/javascript">
+                function initWeb3() {
+                    if (typeof web3 !== 'undefined') {
+                        web3 = new Web3(web3.currentProvider);
+                    }
+                    else {
+                        // web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                        // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/NEefAs8cNxYfiJsYCQjc"));
+                        // web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/NEefAs8cNxYfiJsYCQjc"));
+                        console.error("Web3 is undefined")
+                    }
+                    web3.eth.getAccounts((_, b) => web3.eth.defaultAccount = b[0]);
+                }
+
+                initWeb3()
+        </script>
 
         @scalajs.html.scripts("client", name => s"/assets/$name", name => getClass.getResource(s"/public/$name") != null)
     </body>

@@ -19,10 +19,8 @@ trait TestContract extends Contract {
 
 }
 
-object TestContract extends ContractHelpers {
+object TestContract extends ContractCompanion[TestContract] {
   val abiStr = """[ { "constant": true, "inputs": [], "name": "test", "outputs": [ { "name": "", "type": "string", "value": "Hello World" } ], "payable": false, "stateMutability": "pure", "type": "function" }, { "constant": false, "inputs": [], "name": "testNotPure", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" } ]"""
-
-  def apply(address: String): TestContract = getContract(abiStr, address)
 
   implicit class TestContractExtension(private val contract: TestContract) extends AnyVal {
     def test(): Future[String] = makeAsync(contract.test)

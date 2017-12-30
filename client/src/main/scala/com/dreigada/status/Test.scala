@@ -1,6 +1,6 @@
 package com.dreigada.status
 
-import com.dreigada.contracts.TestContract
+import com.dreigada.contracts.Tweether
 import org.scalajs.jquery.{JQueryEventObject, jQuery}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -8,19 +8,27 @@ import scala.scalajs.js
 
 object Test {
   def TODOmain(args: Array[String]): Unit = {
-    val testContract = TestContract("0x91c7E53A88A80743150ca554D9C5D5E2287062F9")
+    val tweether = Tweether("0x7de537ce72eceb976b7c2ffbd1c3ddb3c8807b20")
 
-    js.Dynamic.global.contract = testContract
+    js.Dynamic.global.contract = tweether
 
-    jQuery("#testPure").on("click", (_: JQueryEventObject) => {
-      testContract.test()
-        .onComplete(println)
-    })
 
-    jQuery("#testNotPure").on("click", (_: JQueryEventObject) => {
-      testContract.testNotPure()
-        .onComplete(println)
-    })
+    def bla(): Unit = tweether.getNumberOfTweeths.map { res =>
+      js.Dynamic.global.res = res
+      println(res)
+    }
 
+    onClick("#register")(tweether.registerUser("user1", "url").onComplete(println))
+    onClick("#makeT")(tweether.makeTweeth("tweet").onComplete(println))
+    onClick("#getT")(tweether.getTweeth(0).onComplete(println))
+
+
+    onClick("#getNumber")(bla())
+
+
+  }
+
+  def onClick(query: String)(body: => Unit): Unit = {
+    jQuery(query).on("click", (_: JQueryEventObject) => body)
   }
 }

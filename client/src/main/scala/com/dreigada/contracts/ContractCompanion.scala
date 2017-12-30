@@ -1,5 +1,6 @@
 package com.dreigada.contracts
 
+import com.dreigada.contracts.Tweether.{abiStr, getContract}
 import com.dreigada.facades.Contract
 import com.dreigada.facades.Contract.Callback
 import com.dreigada.facades.GlobalObjects.web3
@@ -9,7 +10,9 @@ import scala.scalajs.js
 import scala.scalajs.js.JSON
 
 
-trait ContractHelpers {
+trait  ContractCompanion[C <: Contract] {
+
+  def apply(address: String): C = getContract(abiStr, address)
 
   def makeAsync[A](f: Callback[A] => Unit): Future[A] = {
     val promise = Promise[A]

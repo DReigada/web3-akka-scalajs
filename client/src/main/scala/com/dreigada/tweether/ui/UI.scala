@@ -9,7 +9,7 @@ import scala.scalajs.js
 object UI {
 
   def initialize(): Unit = Future {
-    val tweether = Tweether("0x7de537ce72eceb976b7c2ffbd1c3ddb3c8807b20")
+    val tweether = Tweether("0x19a8320781f6dfb6bef5d8e2485f65d569ae9bcb")
     js.Dynamic.global.tw = tweether
 
     TweethInput.initialize(tweether)

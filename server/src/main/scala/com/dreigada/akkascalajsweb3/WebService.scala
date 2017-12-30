@@ -24,7 +24,7 @@ class WebService() extends Directives {
       pathPrefix("tweether") {
         get {
           complete {
-            com.dreigada.tweether.html.index.render()
+            com.dreigada.tweether.html.feed.render()
           }
         }
       }

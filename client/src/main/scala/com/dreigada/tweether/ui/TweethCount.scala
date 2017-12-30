@@ -6,13 +6,8 @@ import org.scalajs.jquery.jQuery
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-object TweethInput {
-
+object TweethCount {
   def initialize(tweether: Tweether): Unit = Future {
-    Helpers.onClick("#tweeth-input-button") { _ =>
-      val text = jQuery("#tweeth-input").`val`().asInstanceOf[String]
-      println(s"Tweething $text")
-      tweether.makeTweeth(text)
-    }
+    tweether.getNumberOfTweeths.map(i => jQuery("#tweeths-number").text(i.toString))
   }
 }

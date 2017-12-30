@@ -8,7 +8,7 @@ import scala.concurrent.Future
 
 object TweethFeed {
 
-  def initialize(tweether: Tweether)(numberOfTweeths: Int): Unit = {
+  def initialize(tweether: Tweether)(numberOfTweeths: Int): Unit = Future {
     getAndShowTweets(tweether)(numberOfTweeths)
   }
 

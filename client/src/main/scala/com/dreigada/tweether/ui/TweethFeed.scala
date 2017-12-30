@@ -5,6 +5,7 @@ import org.scalajs.jquery.{JQuery, jQuery}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.scalajs.js
 
 object TweethFeed {
 
@@ -35,8 +36,11 @@ object TweethFeed {
 
     val template = jQuery("#tweeth-template").clone()
 
+    val date = new js.Date(tweeth.timestamp * 1000)
+    val dateText = js.Dynamic.global.jQuery.timeago(date).asInstanceOf[String]
+    template.find(".tweeth-time").text(dateText)
+
     template.find(".tweeth-image").attr("src", tweeth.user.img)
-    template.find(".tweeth-time").text(tweeth.timestamp.toString)
     template.find(".tweeth-user").text(s"@${tweeth.user.userName}")
     template.find(".tweeth-content").text(tweeth.content)
 

@@ -22,3 +22,8 @@ TWEET FEED STYLES
     max-height: 350px;
     overflow: auto;
 }
+
+.media-body {
+    max-width: 254px;
+    min-width: 254px;
+}

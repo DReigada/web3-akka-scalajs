@@ -8,6 +8,6 @@ import scala.concurrent.Future
 
 object TweethCount {
   def initialize(tweether: Tweether): Unit = Future {
-    tweether.getNumberOfTweeths.map(i => jQuery("#tweeths-number").text(i.toString))
+    tweether.getNumberOfTweeths.map(i => jQuery("#tweeths-number").text(i.value.toString))
   }
 }

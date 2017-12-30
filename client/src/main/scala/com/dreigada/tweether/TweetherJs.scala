@@ -1,5 +1,7 @@
 package com.dreigada.tweether
 
+import com.dreigada.tweether.ui.UI
+
 
 object TweetherJs {
 

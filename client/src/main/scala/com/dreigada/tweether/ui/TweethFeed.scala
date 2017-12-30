@@ -1,29 +1,15 @@
-package com.dreigada.tweether
+package com.dreigada.tweether.ui
 
 import com.dreigada.contracts.{Tweeth, Tweether}
-import org.scalajs.jquery.{JQuery, JQueryEventObject, jQuery}
+import org.scalajs.jquery.{JQuery, jQuery}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.scalajs.js
 
-object UI {
+object TweethFeed {
 
-  def initialize(): Unit = {
-    val tweether = Tweether("0x7de537ce72eceb976b7c2ffbd1c3ddb3c8807b20")
-    js.Dynamic.global.tw = tweether
-
-    onClick("#tweeth-input-button") { _ =>
-      val text = jQuery("#tweeth-input").`val`().asInstanceOf[String]
-      println(s"Tweething $text")
-      tweether.makeTweeth(text)
-    }
-
-    getAndShowTweets(tweether)(10)
-  }
-
-  private def onClick(query: String)(body: JQueryEventObject => Unit): Unit = {
-    jQuery(query).on("click", body)
+  def initialize(tweether: Tweether)(numberOfTweeths: Int): Unit = {
+    getAndShowTweets(tweether)(numberOfTweeths)
   }
 
   private def getAndShowTweets(tweether: Tweether)(count: Int): Future[Unit] = {
@@ -31,7 +17,7 @@ object UI {
       for {
         i <- ntweets.value - Math.min(count, ntweets.value) to ntweets.value
       } {
-        tweether.getTweeth(i).foreach(a => UI.showTweets(Seq(a)))
+        tweether.getTweeth(i).foreach(a => showTweets(Seq(a)))
       }
     }
   }
@@ -58,5 +44,4 @@ object UI {
 
     template
   }
-
 }
